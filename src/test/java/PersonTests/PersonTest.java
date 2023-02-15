@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonTest {
     @Test
@@ -38,6 +37,34 @@ public class PersonTest {
         Person person = new Person("",0,"");
         assertArrayEquals(expected,person.averageAgePerGender(personas));
 
+    }
+    @Test
+    public void testLaListaDeHombresEsVacia(){
+        /**
+         * Comprueba que se lanza una excepcion cuando pasas una lista que no tiene hombres, para evitar
+         * dividir por 0 al hacer la media de edad de hombres, aunque tambien se podria poner un simple if
+         * en person.averageAgePerGender.
+         */
+        List<Person> personas = new ArrayList<>(Arrays.asList(
+                new Person("Alicia",20,"Female"),
+                new Person("Celia", 40,"Female")
+        ));
+        Person person = new Person("",0,"");
+        assertThrows(RuntimeException.class, () -> person.averageAgePerGender(personas));
+    }
+    @Test
+    public void testLaListaDeMujeresEsVacia(){
+        /**
+         * Comprueba que se lanza una excepcion cuando pasas una lista que no tiene hombres, para evitar
+         * dividir por 0 al hacer la media de edad de hombres, aunque tambien se podria poner un simple if
+         * en person.averageAgePerGender.
+         */
+        List<Person> personas = new ArrayList<>(Arrays.asList(
+                new Person("Antonio",20,"Male"),
+                new Person("Carlos", 40,"Male")
+        ));
+        Person person = new Person("",0,"");
+        assertThrows(RuntimeException.class, () -> person.averageAgePerGender(personas));
     }
 
 }

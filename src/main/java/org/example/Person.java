@@ -42,10 +42,10 @@ public class Person {
      * @return
      */
     public double[] averageAgePerGender(List<Person> persons){
-        int sumaEdadHombres = 0;
-        int sumaEdadMujeres = 0;
-        int numeroDeHombres = 0;
-        int numeroDeMujeres = 0;
+        double sumaEdadHombres = 0;
+        double sumaEdadMujeres = 0;
+        double numeroDeHombres = 0;
+        double numeroDeMujeres = 0;
         double mediaEdadHombres = 0;
         double mediaEdadMujeres = 0;
 
@@ -57,6 +57,12 @@ public class Person {
                 sumaEdadMujeres += persona.age;
                 numeroDeMujeres += 1;
             }
+        }
+
+        if(numeroDeHombres<=0){
+            throw new RuntimeException("Numero de hombres negativo");
+        }else if(numeroDeMujeres<=0){
+            throw new RuntimeException("Numero de mujeres negativo");
         }
 
         mediaEdadHombres = sumaEdadHombres/numeroDeHombres;
