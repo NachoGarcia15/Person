@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Class representing a person with a name, age and gender
  *
- * @author Antonio J. Nebro
+ * @author Ignacio Jose Garcia Garcia
  */
 public class Person {
     private final String name;
@@ -20,7 +20,9 @@ public class Person {
      * @param gender the gender of the person
      */
     public Person(String name, int age, String gender){
-
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
     }
     public String name(){
         return name;
@@ -39,7 +41,27 @@ public class Person {
      * @param persons
      * @return
      */
-    public double[] avergaeAgePerGender(List<Person> persons){
-        return null;
+    public double[] averageAgePerGender(List<Person> persons){
+        int sumaEdadHombres = 0;
+        int sumaEdadMujeres = 0;
+        int numeroDeHombres = 0;
+        int numeroDeMujeres = 0;
+        double mediaEdadHombres = 0;
+        double mediaEdadMujeres = 0;
+
+        for( Person persona : persons ){
+            if(persona.gender.equals("Male")){
+                sumaEdadHombres += persona.age;
+                numeroDeHombres += 1;
+            }else{
+                sumaEdadMujeres += persona.age;
+                numeroDeMujeres += 1;
+            }
+        }
+
+        mediaEdadHombres = sumaEdadHombres/numeroDeHombres;
+        mediaEdadMujeres = sumaEdadMujeres/numeroDeMujeres;
+
+        return new double[] {mediaEdadHombres,mediaEdadMujeres};
     }
 }
