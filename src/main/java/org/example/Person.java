@@ -3,43 +3,53 @@ package org.example;
 import java.util.List;
 
 /**
- * Class representing a person with a name, age and gender
+ * Clase que representa a una persona con nombre, edad y género.
  *
  * @author Ignacio Jose Garcia Garcia
  */
 public class Person {
     private final String name;
     private final int age;
-    private final String gender;// Male, Female
+    private final String gender;// Male o Female
 
     /**
-     * Constructs a person with a name, age and gender.
+     * Constructor que crea una persona con un nombre, edad y género dados.
      *
-     * @param name the name of the person
-     * @param age the age of the person
-     * @param gender the gender of the person
+     * @param name el nombre de la persona
+     * @param age la edad de la persona
+     * @param gender el género de la persona ("Male" o "Female")
      */
     public Person(String name, int age, String gender){
         this.name = name;
         this.age = age;
         this.gender = gender;
     }
+
+    /**
+     * @return el nombre de la persona
+     */
     public String name(){
         return name;
     }
+
+    /**
+     * @return la edad de la persona
+     */
     public int age(){
         return age;
     }
+
+    /**
+     * @return el genero de la persona
+     */
     public String gender(){
         return gender;
     }
     /**
-     * Computes the average age of male and female persons in a list and returns the result in
-     * an array of two elements (the first element is the male mean age and the second one is the
-     * female mean age)
+     * Calcula la edad media de las personas en la lista, separadas por género, y devuelve el resultado en
+     * un array de dos elementos (el primer elemento es la edad media de los hombres y el segundo es la
+     * edad media de las mujeres).
      *
-     * @param persons
-     * @return
      */
     public double[] averageAgePerGender(List<Person> persons){
         double sumaEdadHombres = 0;
@@ -49,6 +59,10 @@ public class Person {
         double mediaEdadHombres = 0;
         double mediaEdadMujeres = 0;
 
+        /**
+         * suma todas las edades de hombre y mujeres por separado, y por cada hombre o mujer, suma 1
+         * al contador de hombres o mujeres respectivamente.
+         */
         for( Person persona : persons ){
             if(persona.gender.equals("Male")){
                 sumaEdadHombres += persona.age;
@@ -59,12 +73,18 @@ public class Person {
             }
         }
 
+        /**
+         * si el numero de hombres o mujeres es 0, salta la excepcion.
+         */
         if(numeroDeHombres<=0){
             throw new RuntimeException("Numero de hombres negativo");
         }else if(numeroDeMujeres<=0){
             throw new RuntimeException("Numero de mujeres negativo");
         }
 
+        /**
+         * se calcula finalmente la media.
+         */
         mediaEdadHombres = sumaEdadHombres/numeroDeHombres;
         mediaEdadMujeres = sumaEdadMujeres/numeroDeMujeres;
 
