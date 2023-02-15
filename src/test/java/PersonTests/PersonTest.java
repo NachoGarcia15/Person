@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PersonTest {
     @Test
     public void testConstructor(){
+        /**
+         * Test sencillo para comprobar que el constructor funciona bien
+         */
         String name = "Nacho";
         int age = 22;
         String gender = "Male";
@@ -56,7 +59,7 @@ public class PersonTest {
     public void testLaListaDeMujeresEsVacia(){
         /**
          * Comprueba que se lanza una excepcion cuando pasas una lista que no tiene hombres, para evitar
-         * dividir por 0 al hacer la media de edad de hombres, aunque tambien se podria poner un simple if
+         * dividir por 0 al hacer la media de edad de mujeres, aunque tambien se podria poner un simple if
          * en person.averageAgePerGender.
          */
         List<Person> personas = new ArrayList<>(Arrays.asList(
